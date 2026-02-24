@@ -1,8 +1,11 @@
 import random
 import re
+from array import array
+
 random.seed(random.randint(1, 2))
 
 days = []
+
 
 for i in range(365):
     days.append(random.randint(0, 1))
@@ -28,4 +31,14 @@ for match in indexes:
         longest[1] = length
 print(longest)
 
+indexes_filtered = [item for item in indexes if item[1] - item[0] > 5]
+longest = [-1, (0, 0)]
+for arr in indexes_filtered:
+    arr_length = arr[1] - arr[0]
+    if arr_length > longest[0]:
+        longest[0] = arr_length
+        longest[1] = arr
+
 print(indexes)
+print(indexes_filtered)
+print(longest)
